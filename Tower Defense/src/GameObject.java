@@ -7,7 +7,7 @@ public abstract class GameObject {
     long lastTime;
     double xVel = .001 ;
     double yVel = .001;
-    double speed = 2000;
+    double speed = 1000;
 
 
     //this should be a real time movement method. After the elapsed time the velocity is used to calculate the distance used.
@@ -42,8 +42,15 @@ public abstract class GameObject {
 
     }
 
+    public int getR(){
+        return this.r;
+    }
 
-    //if
+    public int getC(){
+        return this.c;
+    }
+
+    //this will move the object one square in the direction of t he x y coordinates.
     private void updateDirection(Board board, int x, int y){
         if (isValidPosition(board, x, y)) {
             board.changeTile(Tile.BLANKSPACE,r,c);
@@ -63,8 +70,17 @@ public abstract class GameObject {
         }
     }
 
+    //gets the locaarion of the first player in the board list.
+    public int[] findPlayer(Board board){
+        Player p = (Player) board.getPlayer();
+        int y=p.getR();
+        int x=p.getC();
+        return new int[] {r,c};
+    }
 
-
+    public Tile getType(){
+        return this.type;
+    }
 
 
     //used to test movement. start acceleration

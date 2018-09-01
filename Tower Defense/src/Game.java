@@ -26,7 +26,7 @@ public class Game {
 	private void update(){
 		P1.update(board);
 
-		M1.move(board,0,5);
+		M1.followPlayer(board, P1);
 	}
 	
 	public void stopGame(){

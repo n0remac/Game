@@ -1,8 +1,10 @@
+import java.util.LinkedList;
 
 public class Board {
 	int r;
 	int c;
 	Tile [][] board;
+	LinkedList<GameObject> gameObject = new LinkedList<GameObject>(); //this should probably be separated into two separate lists eventual. 1 for monsters and 1 for players.
 	
 	Tile tile;
 	
@@ -12,7 +14,24 @@ public class Board {
 		board=new Tile[r][c];
 		board=setBoard( board, r, c);
 	}
-	
+	public void addGameObject(GameObject obj){
+        gameObject.add(obj);
+    }
+
+    public void removeGameObject(GameObject obj){
+	    gameObject.remove(obj);
+    }
+
+    //gets the first player object in the gameobject list.
+    public GameObject getPlayer(){
+	    for(GameObject obj:gameObject){
+	        if(obj.getType().compareTo(Tile.PLAYER)==0){
+	            return obj;
+            }
+        }
+        return null;
+    }
+
 	public int getR(){
 		return this.r;
 	}
