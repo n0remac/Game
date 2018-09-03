@@ -6,6 +6,12 @@ public class Player extends GameObject{
 	public Player(){
 		type=Tile.PLAYER;
 	}
+
+	public Player(int r, int c){
+		setR(r);
+		setC(c);
+		type=Tile.PLAYER;
+	}
 	
 	public void update(Board board){ //this is where the players movements are input
 		String key=getKey(board);

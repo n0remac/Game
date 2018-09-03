@@ -1,4 +1,4 @@
-
+import static java.lang.Math.random;
 
 public abstract class GameObject {
     int r=1;
@@ -8,6 +8,9 @@ public abstract class GameObject {
     double xVel = .001 ;
     double yVel = .001;
     double speed = 1000;
+    long ID=System.currentTimeMillis();
+
+    boolean removeFromBoardList=false;
 
 
     //this should be a real time movement method. After the elapsed time the velocity is used to calculate the distance used.
@@ -46,9 +49,9 @@ public abstract class GameObject {
         return this.r;
     }
 
-    public int getC(){
-        return this.c;
-    }
+    public int getC(){ return this.c; }
+    public void setR(int r){this.r=r;}
+    public void setC(int c){this.c=c;}
 
     //this will move the object one square in the direction of t he x y coordinates.
     private void updateDirection(Board board, int x, int y){
@@ -70,14 +73,10 @@ public abstract class GameObject {
         }
     }
 
-    //gets the locaarion of the first player in the board list.
-    public int[] findPlayer(Board board){
-        Player p = (Player) board.getPlayer();
-        int y=p.getR();
-        int x=p.getC();
-        return new int[] {r,c};
-    }
 
+    public void setType(Tile tile){
+        type=tile;
+    }
     public Tile getType(){
         return this.type;
     }
